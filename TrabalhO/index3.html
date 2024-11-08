@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Tarefas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Barra de Navegação -->
+    <nav class="navbar" role="navigation" aria-label="Navegação principal">
+        <h1>Gerenciamento de Tarefas</h1>
+        <ul>
+            <li><a href="index1.html" aria-label="Ir para cadastro de usuários" tabindex="0">Cadastro de Usuários</a></li>
+            <li><a href="index2.html" aria-label="Ir para cadastro de tarefas" tabindex="0">Cadastro de Tarefas</a></li>
+            <li><a href="index3.html" aria-label="Ir para gerenciar tarefas" tabindex="0">Gerenciar Tarefas</a></li>
+        </ul>
+    </nav>
+
+    <!-- Cabeçalho principal -->
+    <header>
+        <h1>Gerenciamento de Tarefas</h1>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <main>
+        <section class="task-board" aria-labelledby="taskBoardTitle">
+            <h2 id="taskBoardTitle" class="sr-only">Quadro de Tarefas</h2> <!-- Acessibilidade - título oculto -->
+            
+            <!-- Tarefas A Fazer -->
+            <div class="task-column" id="todo-column" aria-live="polite">
+                <h3>A Fazer</h3>
+                <div class="task-list" id="todo">
+                    <!-- Exemplo de tarefa -->
+                    <div class="task-card">
+                        <p><strong>Descrição:</strong> Exemplo de Tarefa</p>
+                        <p><strong>Setor:</strong> TI</p>
+                        <p><strong>Prioridade:</strong> Alta</p>
+                        <p><strong>Responsável:</strong> Donaldo</p>
+                        <div class="task-actions">
+                            <button class="edit-btn" onclick="editarTarefa(1)">Editar</button>
+                            <button class="delete-btn" onclick="confirmarExclusao(1)">Excluir</button>
+                            <select onchange="alterarStatus(1, this.value)">
+                                <option value="a_fazer">A Fazer</option>
+                                <option value="fazendo">Fazendo</option>
+                                <option value="pronto">Pronto</option>
+                            </select>
+                            <button class="update-status-btn" onclick="atualizarStatus(1)">Alterar Status</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarefas Fazendo -->
+            <div class="task-column" id="in-progress-column" aria-live="polite">
+                <h3>Fazendo</h3>
+                <div class="task-list" id="in-progress">
+                    <!-- Tarefas "Fazendo" serão carregadas aqui -->
+                </div>
+            </div>
+
+            <!-- Tarefas Pronto -->
+            <div class="task-column" id="done-column" aria-live="polite">
+                <h3>Pronto</h3>
+                <div class="task-list" id="done">
+                    <!-- Tarefas "Pronto" serão carregadas aqui -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal de Exclusão -->
+    <div id="deleteModal" class="modal" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
+        <div class="modal-content">
+            <h2 id="deleteModalTitle">Confirmar Exclusão</h2>
+            <p>Você tem certeza que deseja excluir esta tarefa?</p>
+            <button id="confirmDelete" class="modal-btn" aria-label="Confirmar exclusão da tarefa" tabindex="0" onclick="excluirTarefa()">Confirmar</button>
+            <button id="cancelDelete" class="modal-btn" aria-label="Cancelar exclusão da tarefa" tabindex="0" onclick="fecharModal()">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2024 Gerenciamento de Tarefas.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
